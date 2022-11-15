@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: MyAdapter
     private val items = ArrayList<Item>()
+
     //接收回傳資料
     override fun onActivityResult(requestCode: Int, resultCode: Int, data:
     Intent?) {
@@ -24,12 +25,14 @@ class MainActivity : AppCompatActivity() {
                 items.add(Item(time, todo))
                 //更新列表
                 adapter.notifyDataSetChanged()
+
             }
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         //將變數與 XML 元件綁定
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val btn_add = findViewById<Button>(R.id.btn_add)
@@ -53,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
 //設計新的類別定義聯絡人的資料結構
 data class Item (
-    val time: String, //姓名
-    val todo: String //電話
+    val time: String, //
+    val todo: String,
+    var b: Boolean = false//
 )

@@ -24,7 +24,10 @@ class SecActivity : AppCompatActivity() {
         val midBtn = findViewById<RadioButton>(R.id.midBtn)
         val lowBtn = findViewById<RadioButton>(R.id.lowBtn)
         val v = LayoutInflater.from(this).inflate(R.layout.adapter_row, null)
+
         val tv_todo = v.findViewById<TextView>(R.id.tv_todo)
+
+
 
         //設定按鈕監聽器
         btn_send.setOnClickListener {
@@ -45,6 +48,8 @@ class SecActivity : AppCompatActivity() {
                     val b = Bundle()
                     b.putString("time", ed_time.text.toString())
                     b.putString("todo", ed_todo.text.toString())
+
+
                     //使用 setResult()回傳聯絡人資料
                     setResult(Activity.RESULT_OK, Intent().putExtras(b))
                     finish()

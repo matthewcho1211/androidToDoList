@@ -34,6 +34,9 @@ class MyAdapter(private val data: ArrayList<Item>) :
 
         holder.check_date.text = data[position].time
         holder.tv_todo.text = data[position].todo
+        holder.check_date.isChecked = data[position].b
+
+
         val colors = ArrayList<String>()
         colors.add("#FFFFFFFF")
         colors.add("#FFFF00")
@@ -43,6 +46,15 @@ class MyAdapter(private val data: ArrayList<Item>) :
         holder.tv_todo.setOnClickListener {
             holder.tv_todo.setBackgroundColor(Color.parseColor(colors[Random.nextInt(colors.size)]))
         }
+
+        holder.check_date.setOnClickListener{
+            var bool = holder.check_date.isChecked
+            holder.check_date.isChecked = bool
+            data[position].b = bool
+            notifyDataSetChanged()
+
+        }
+
 
 
         //設定監聽器，使用 removeAt()刪除指定位置的資料
